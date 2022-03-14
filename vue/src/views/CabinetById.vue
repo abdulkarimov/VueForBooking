@@ -10,11 +10,51 @@
     <h5 class="card-title">{{cabinet.number_cabinet}}</h5>
     <h6 class="card-subtitle mb-2 text-muted">{{cabinet.status}}</h6>
     <p class="card-text">{{cabinet.description}}</p>
-  </div>
   <input  type="date" id="start" name="trip-start" :value="this.date" :min ="this.date">
+  </div>
 
-<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-primary"  @click='Click()'>Primary</button>
 </div>
+
+
+<div v-show="flag1" >
+<div>
+ <button type="button" id="1"  :style="{ color: activeColor}" class="btn btn-light" style="margin: 10px;">1:00</button>
+ <button type="button" id="2"  :style="{ color: activeColor}" class="btn btn-light" style="margin: 10px;">2:00</button>
+ <button type="button" id="3"  :style="{ color: activeColor}" class="btn btn-light" style="margin: 10px;">3:00</button>
+ <button type="button" id="4"  :style="{ color: activeColor}" class="btn btn-light" style="margin: 10px;">4:00</button>
+ <button type="button" id="5"  :style="{ color: activeColor}" class="btn btn-light" style="margin: 10px;">5:00</button>
+ <button type="button" id="6"  :style="{ color: activeColor}" class="btn btn-light" style="margin: 10px;">6:00</button>
+ <button type="button" id="7"  :style="{ color: activeColor}" class="btn btn-light" style="margin: 10px;">7:00</button>
+ <button type="button" id="8"  :style="{ color: activeColor}" class="btn btn-light" style="margin: 10px;">8:00</button>
+ <button type="button" id="9" ref="textName" :style="{ color: activeColor}" class="btn btn-light" style="margin: 10px;">9:00</button>
+ <button type="button" id="10"  :style="{ color: activeColor}" class="btn btn-light" style="margin: 10px;">10:00</button>
+ <button type="button" id="11"  :style="{ color: activeColor}" class="btn btn-light" style="margin: 10px;">11:00</button>
+ <button type="button" id="12"  :style="{ color: activeColor}" class="btn btn-light" style="margin: 10px;">12:00</button>
+</div>
+
+<div>
+ <button type="button" :style="{ color: activeColor}" class="btn btn-light" style="margin: 10px;">13:00</button>
+ <button type="button" :style="{ color: activeColor}" class="btn btn-light" style="margin: 10px;">14:00</button>
+ <button type="button" :style="{ color: activeColor}" class="btn btn-light" style="margin: 10px;">15:00</button>
+ <button type="button" :style="{ color: activeColor}" class="btn btn-light" style="margin: 10px;">16:00</button>
+ <button type="button" :style="{ color: activeColor}" class="btn btn-light" style="margin: 10px;">17:00</button>
+ <button type="button" :style="{ color: activeColor}" class="btn btn-light" style="margin: 10px;">18:00</button>
+ <button type="button" :style="{ color: activeColor}" class="btn btn-light" style="margin: 10px;">19:00</button>
+ <button type="button" :style="{ color: activeColor}" class="btn btn-light" style="margin: 10px;">20:00</button>
+ <button type="button" :style="{ color: activeColor}" class="btn btn-light" style="margin: 10px;">21:00</button>
+ <button type="button" :style="{ color: activeColor}" class="btn btn-light" style="margin: 10px;">22:00</button>
+ <button type="button" :style="{ color: activeColor}" class="btn btn-light" style="margin: 10px;">23:00</button>
+ <button type="button" :style="{ color: activeColor}" class="btn btn-light" style="margin: 10px;">00:00</button>
+</div>
+
+
+<button type="button" class="btn btn-primary"  @click='Click()'>Apply </button>
+</div>
+
+
+
+
   </div>  
   </body>
   </html>
@@ -25,12 +65,39 @@ import axios from 'axios';
 export default {
  data: function () {
   return {
+    activeColor: 'blue',
+    counted : 0,
+    flag1 : false,
     cabinet: {},
-    date : ""
+    date : "",
+    booking: {},
   }
 },
  methods : {
+Click() {
+    this.flag1 = true;
+      axios.post('http://abdula.loc/api/booking/test', {
+          "id" : this.$route.params.id,
+          "time" : this.date
+      })
+      .then(response => (this.booking = response.data.forEach(function(data, index) {
+        var start = data['time_start'].split(" ");    
+        var end = data['time_end'].split(" ");    
 
+        
+
+
+  
+         // for(var i = 0; i < minus; i++)
+      
+
+
+    })));
+
+
+
+
+      },
     },
       mounted() {
        var d = new Date();
