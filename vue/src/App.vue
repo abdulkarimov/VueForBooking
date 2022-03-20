@@ -3,8 +3,7 @@ config/*.js
 bower_components/foo/*.js
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/store">add</router-link> |
+    <router-link to="/">Home</router-link> 
   </div>
   <router-view/>
 </template>

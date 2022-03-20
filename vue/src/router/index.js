@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Cabinet from '../views/Cabinet.vue'
 import CabinetById from '../views/CabinetById.vue'
+import CabinetEdit from '../views/CabinetEdit.vue'
 
 
 const routes = [
@@ -13,6 +14,11 @@ const routes = [
     path: '/CabinetById/:id',
     name: 'CabinetById',
     component: CabinetById,
+  },
+  {
+    path: '/CabinetEdit/:id',
+    name: 'CabinetEdit',
+    component: CabinetEdit,
   }
 ]
 
